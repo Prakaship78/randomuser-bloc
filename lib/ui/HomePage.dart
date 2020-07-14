@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget buildRandomUserList(List results) {
+  Widget buildRandomUserList(List<User> results) {
     return ListView.builder(
       itemCount: results.length,
       itemBuilder: (context, pos) {
@@ -83,19 +83,19 @@ class _HomePageState extends State<HomePage> {
           child: InkWell(
             child: ListTile(
               leading: ClipOval(
-                child: Hero(
-                    tag: results[pos]['picture']['large'],
-                    child: results[pos]['picture']['large'] != null
-                        ? Image.network(
-                            results[pos]['picture']['large'],
-                            fit: BoxFit.cover,
-                            height: 70,
-                            width: 70,
-                          )
-                        : Container()),
-              ),
-              title: Text(results[pos]['name']['title']),
-              subtitle: Text(results[pos]['gender']),
+                  // child: Hero(
+                  //     tag: results[pos]['gender'],
+                  //     child: results[pos]['gender'] != null
+                  //         ? Image.network(
+                  //             results[pos]['gender'],
+                  //             fit: BoxFit.cover,
+                  //             height: 70,
+                  //             width: 70,
+                  //           )
+                  //         : Container()),
+                  ),
+              title: Text(results[pos].gender),
+              subtitle: Text(results[pos].email),
             ),
           ),
         );

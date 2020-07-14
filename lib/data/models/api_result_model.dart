@@ -26,6 +26,12 @@ class ApiResultModel {
   }
 }
 
+class User {
+  final String gender;
+  final String email;
+  User(this.gender, this.email);
+}
+
 class Results {
   String gender;
   Name name;

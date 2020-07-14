@@ -16,7 +16,8 @@ class RandomUserBloc extends Bloc<RandomUserEvent, RandomUserState> {
     if (event is FetchRandomuserEvent) {
       yield RandomUserLoadingState();
       try {
-        List<Results> results = await repository.getRandomUser();
+        List<User> results = await repository.getRandomUser();
+        // print(results[0].gender);
         yield RandomUserLoadedlState(results: results);
       } catch (e) {
         RandomUserErrorState(message: e.toString());

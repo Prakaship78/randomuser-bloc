@@ -4,18 +4,25 @@ import 'package:randomuserbloc/res/strings.dart';
 import 'dart:convert';
 
 abstract class RandomUserRepository {
-  Future<List<Results>> getRandomUser();
+  Future<List<User>> getRandomUser();
 }
 
 class RandomUserImpl implements RandomUserRepository {
   @override
-  Future<List<Results>> getRandomUser() async {
+  Future<List<User>> getRandomUser() async {
     var response = await http.get(AppString.randomUserUrl);
     if (response.statusCode == 200) {
       var data = json.decode(response.body);
-      print(data);
+      data = data['results'];
+      // print(data);
 
-      List<Results> results = ApiResultModel.fromJson(data).results;
+      List<User> results = [];
+      for (var u in data) {
+        User user = User(u['gender'], u['email']);
+        results.add(user);
+      }
+
+      // print(results);
 
       return results;
     } else {

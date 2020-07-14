@@ -15,7 +15,7 @@ class RandomUserLoadingState extends RandomUserState {
 }
 
 class RandomUserLoadedlState extends RandomUserState {
-  List results;
+  List<User> results;
   RandomUserLoadedlState({@required this.results});
   @override
   List<Object> get props => throw UnimplementedError();
